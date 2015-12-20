@@ -1,0 +1,11 @@
+site_name: don-stephen
+site_description: An app for gathering requirements and converting them to tests.
+repo_url: https://github.com/Don-Stephen/don_backend
+site_dir: site
+copyright: Copyright &copy; 2015, <a href="https://github.com/Don-Stephen">Don-Stephen</a>.
+
+pages:
+  - Home: 'index.md'
+  - API:
+    - Authentication: 'api/authentication.md'
+    - Users: 'api/users.md'
