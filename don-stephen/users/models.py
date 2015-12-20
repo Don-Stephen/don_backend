@@ -51,5 +51,5 @@ class Scenario(models.Model):
     title = models.CharField(max_length=255)
     given = models.CharField(max_length=255)
     then = models.CharField(max_length=255)
-    tags = models.ManyToManyField(Tag)
+    tags = models.ManyToManyField(Tag, null=True, blank=True)
 
