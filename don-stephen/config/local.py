@@ -7,6 +7,21 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 class Local(Common):
 
+
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': 'don_stephen',
+            'USER': 'root',
+            'PASSWORD': '',
+            'HOST': 'localhost',
+            'PORT': '',
+            'OPTIONS': {
+                "init_command": "SET storage_engine=INNODB",
+            }
+        }
+    }
+
     DEBUG = values.BooleanValue(True)
     for config in Common.TEMPLATES:
         config['OPTIONS']['debug'] = DEBUG
