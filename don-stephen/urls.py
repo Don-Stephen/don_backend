@@ -14,7 +14,7 @@ from users.views import (UserViewSet, ProjectViewSet, FeatureViewSet,
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
-router.register(r'proyects', ProjectViewSet)
+router.register(r'projects', ProjectViewSet)
 router.register(r'features', FeatureViewSet)
 router.register(r'tags', TagViewSet)
 router.register(r'scenarios', ScenarioViewSet)
