@@ -25,7 +25,8 @@ class Common(Configuration):
 
         # Your apps
         'authentication',
-        'users'
+        'users',
+        'corsheaders',
 
     )
 
@@ -37,7 +38,8 @@ class Common(Configuration):
         'django.contrib.auth.middleware.AuthenticationMiddleware',
         'django.contrib.messages.middleware.MessageMiddleware',
         'django.middleware.clickjacking.XFrameOptionsMiddleware',
-        'django.middleware.security.SecurityMiddleware'
+        'django.middleware.security.SecurityMiddleware',
+        'corsheaders.middleware.CorsMiddleware',
     )
 
     ROOT_URLCONF = 'urls'
@@ -194,3 +196,21 @@ class Common(Configuration):
         'placeholder_directory_name': '__placeholder__',
         'create_images_on_demand': False
     }
+
+    CORS_ORIGIN_ALLOW_ALL = True
+    CORS_ALLOW_METHODS = (
+        'GET',
+        'POST',
+        'PUT',
+        'PATCH',
+        'DELETE',
+        'OPTIONS'
+    )
+    CORS_ALLOW_HEADERS = (
+        'x-requested-with',
+        'content-type',
+        'accept',
+        'origin',
+        'authorization',
+        'x-csrftoken'
+    )
