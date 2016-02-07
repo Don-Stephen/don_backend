@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import (User, Proyect, Feature, Scenario,
+from .models import (User, Project, Feature, Scenario,
                      LanguageConfig, SenderConfig, Tag)
                      
 
@@ -26,10 +26,10 @@ class CreateUserSerializer(serializers.ModelSerializer):
         write_only_fields = ('password',)
 
 
-class ProyectSerializer(serializers.ModelSerializer):
+class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
-        model = Proyect
+        model = Project
         fields = ('id', 'name', 'location', 'languages')
 
     def create(self, validated_data):
@@ -37,7 +37,7 @@ class ProyectSerializer(serializers.ModelSerializer):
             languages = validated_data.pop('languages')
         else:
             languages = None
-        proyect = Proyect.objects.create(**validated_data)
+        proyect = Project.objects.create(**validated_data)
         if languages is not None:
             proyect.languages.add(*languages)
         proyect.save()

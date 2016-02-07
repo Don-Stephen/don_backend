@@ -1,12 +1,12 @@
 from rest_framework import viewsets, mixins
 from rest_framework.permissions import AllowAny
 
-from .models import (User, Proyect, Feature, Scenario,
+from .models import (User, Project, Feature, Scenario,
                      LanguageConfig, SenderConfig, Tag)
 
 from .permissions import IsOwnerOrReadOnly
 from .serializers import (CreateUserSerializer, UserSerializer, 
-                          ProyectSerializer, FeatureSerializer,
+                          ProjectSerializer, FeatureSerializer,
                           TagSerializer, ScenarioSerializer,
                           LanguageConfigSerializer, SenderConfigSerializer)
 
@@ -30,17 +30,17 @@ class UserViewSet(mixins.CreateModelMixin,
         return super(UserViewSet, self).create(request, *args, **kwargs)
 
 
-class ProyectViewSet(mixins.CreateModelMixin,
+class ProjectViewSet(mixins.CreateModelMixin,
                      mixins.RetrieveModelMixin,
                      mixins.UpdateModelMixin,
                      mixins.ListModelMixin,
                      mixins.DestroyModelMixin,
                      viewsets.GenericViewSet):
     """
-    Creates, Updates, and retrives Proyects
+    Creates, Updates, and retrives Projects
     """
-    queryset = Proyect.objects.all()
-    serializer_class = ProyectSerializer
+    queryset = Project.objects.all()
+    serializer_class = ProjectSerializer
     permission_classes = (AllowAny,)
 
 

@@ -24,7 +24,7 @@ class User(AbstractUser):
         return self.username
 
 
-class Proyect(models.Model):
+class Project(models.Model):
 
     name = models.CharField(max_length=255)
     location = models.CharField(max_length=255)
@@ -38,7 +38,7 @@ class Feature(models.Model):
     who = models.CharField(max_length=255)
     purpose = models.CharField(max_length=255)
     ffile = models.FileField()
-    proyect = models.ForeignKey(Proyect)
+    project = models.ForeignKey(Project)
 
 
 class Tag(models.Model):
