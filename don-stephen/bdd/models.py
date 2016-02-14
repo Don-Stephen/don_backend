@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from users.models import LanguageConfig, Project, Tag
 # from django.utils.translation import ugettext_lazy as _
 
 class Feature(models.Model):
