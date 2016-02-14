@@ -6,8 +6,7 @@ from .models import (User, Project, Tag,
 
 from .permissions import IsOwnerOrReadOnly
 from .serializers import (CreateUserSerializer, UserSerializer,
-                          ProjectSerializer, FeatureSerializer,
-                          TagSerializer, ScenarioSerializer,
+                          ProjectSerializer, TagSerializer,
                           LanguageConfigSerializer, SenderConfigSerializer)
 
 
