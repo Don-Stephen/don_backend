@@ -31,25 +31,5 @@ class Project(models.Model):
     languages = models.ManyToManyField(LanguageConfig)
 
 
-class Feature(models.Model):
-    language = models.ForeignKey(LanguageConfig)
-    description = models.CharField(max_length=255)
-    finality = models.CharField(max_length=255)
-    who = models.CharField(max_length=255)
-    purpose = models.CharField(max_length=255)
-    ffile = models.FileField()
-    project = models.ForeignKey(Project)
-
-
 class Tag(models.Model):
     name = models.CharField(max_length=255)
-
-
-class Scenario(models.Model):
-
-    feature = models.ForeignKey(Feature)
-    title = models.CharField(max_length=255)
-    given = models.CharField(max_length=255)
-    then = models.CharField(max_length=255)
-    tags = models.ManyToManyField(Tag, null=True, blank=True)
-
