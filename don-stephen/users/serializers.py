@@ -1,8 +1,8 @@
 from rest_framework import serializers
 
-from .models import (User, Project, Feature, Scenario,
-                     LanguageConfig, SenderConfig, Tag)
-                     
+from .models import (User, Project, Tag,
+                     LanguageConfig, SenderConfig)
+
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -43,18 +43,6 @@ class ProjectSerializer(serializers.ModelSerializer):
         proyect.save()
         return proyect
 
-
-class FeatureSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Feature
-        fields = ('id', 'language', 'description', 'finality', 'who', 'purpose', 'proyect')
-
-    def create(self, validated_data):
-        feature = Feature.objects.create(**validated_data)
-        return feature
-
-
 class TagSerializer(serializers.ModelSerializer):
 
     class Meta:
@@ -64,22 +52,6 @@ class TagSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         tag = Tag.objects.create(**validated_data)
         return tag
-
-
-class ScenarioSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Scenario
-
-    def create(self, validated_data):
-        if 'tags' in validated_data:
-            tags = validated_data.pop('tags')
-        else:
-            tags = None
-        scenario = Scenario.objects.create(**validated_data)
-        if tags is not None:
-            scenario.tags.add(*tags)
-        return scenario
 
 
 class LanguageConfigSerializer(serializers.ModelSerializer):
@@ -99,4 +71,4 @@ class SenderConfigSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         senderconfig = SenderConfig.objects.create(**validated_data)
-        return senderconfig 
+        return senderconfig
