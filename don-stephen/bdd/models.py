@@ -40,7 +40,7 @@ class Then(models.Model):
 
 class And(models.Model):
     text = models.CharField(max_length=255)
-    related_to = models.CharField(max_length=255, choices=['given', 'then', 'when'])
+    related_to = models.CharField(max_length=255, choices=[('given', 'given'), ('then', 'then'), ('when', 'when')])
     table = models.TextField()
     background = models.ForeignKey(Background)
     scenario = models.ForeignKey(Scenario)
