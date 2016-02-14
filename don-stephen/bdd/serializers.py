@@ -7,7 +7,7 @@ class FeatureSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Feature
-        fields = ('id', 'language', 'description', 'finality', 'who', 'purpose', 'proyect')
+        fields = ('id', 'language', 'description', 'finality', 'who', 'purpose', 'project')
 
     def create(self, validated_data):
         feature = Feature.objects.create(**validated_data)
