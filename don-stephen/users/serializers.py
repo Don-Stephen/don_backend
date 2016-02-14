@@ -30,7 +30,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Project
-        fields = ('id', 'name', 'location', 'languages')
+        fields = ('id', 'name', 'languages')
         depth = 1
 
     def create(self, validated_data):
