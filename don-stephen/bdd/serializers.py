@@ -17,6 +17,7 @@ class ScenarioSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Scenario
+        depth = 2
 
     def create(self, validated_data):
         if 'tags' in validated_data:

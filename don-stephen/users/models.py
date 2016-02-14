@@ -27,7 +27,6 @@ class User(AbstractUser):
 class Project(models.Model):
 
     name = models.CharField(max_length=255)
-    location = models.CharField(max_length=255)
     languages = models.ManyToManyField(LanguageConfig)
 
 

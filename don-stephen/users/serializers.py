@@ -31,6 +31,7 @@ class ProjectSerializer(serializers.ModelSerializer):
     class Meta:
         model = Project
         fields = ('id', 'name', 'location', 'languages')
+        depth = 1
 
     def create(self, validated_data):
         if 'languages' in validated_data:
