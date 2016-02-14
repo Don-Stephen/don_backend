@@ -3,7 +3,6 @@ from rest_framework.permissions import AllowAny
 
 from .models import Feature, Scenario
 
-from .permissions import IsOwnerOrReadOnly
 from .serializers import FeatureSerializer, ScenarioSerializer
 
 
