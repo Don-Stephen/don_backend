@@ -55,7 +55,7 @@ class ProjectSerializer(serializers.ModelSerializer):
 
         project = Project.objects.create(**validated_data)
         project.save()
-        return proyect
+        return project
 
 class TagSerializer(serializers.ModelSerializer):
 
