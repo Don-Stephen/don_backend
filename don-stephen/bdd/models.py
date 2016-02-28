@@ -31,8 +31,8 @@ class Scenario(models.Model):
 
 class Given(models.Model):
     content = models.CharField(max_length=255)
-    scenario = models.ForeignKey(Scenario)
-    background = models.ForeignKey(Background)
+    scenario = models.ForeignKey(Scenario, null=True)
+    background = models.ForeignKey(Background, null=True)
 
     def __unicode__(self):
         return self.content
@@ -56,8 +56,8 @@ class And(models.Model):
     content = models.CharField(max_length=255)
     related_to = models.CharField(max_length=255, choices=[('given', 'given'), ('then', 'then'), ('when', 'when')])
     table = models.TextField()
-    background = models.ForeignKey(Background)
-    scenario = models.ForeignKey(Scenario)
+    background = models.ForeignKey(Background, null=True)
+    scenario = models.ForeignKey(Scenario, null=True)
 
     def __unicode__(self):
         return self.content
