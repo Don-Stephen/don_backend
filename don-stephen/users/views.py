@@ -1,4 +1,5 @@
 from rest_framework import viewsets, mixins
+from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 
 from .models import (User, Project, Tag,
@@ -42,6 +43,15 @@ class ProjectViewSet(mixins.CreateModelMixin,
     serializer_class = ProjectSerializer
     permission_classes = (AllowAny,)
 
+    def create(self, request, *args, **kwargs):
+        project = self.serializer_class(data=request.data)
+        if project.is_valid():
+            project = project.create(validated_data=project.data)
+            if 'languages' in request.data:
+                project.languages.add(*LanguageConfig.objects.filter(id__in=request.data['languages']))
+            return Response(data=self.serializer_class(project).data, status=201)
+        else:
+            return Response(data=project.errors, status=400)
 
 class TagViewSet(mixins.CreateModelMixin,
                  mixins.RetrieveModelMixin,
