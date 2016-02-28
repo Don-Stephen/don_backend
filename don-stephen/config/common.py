@@ -27,7 +27,7 @@ class Common(Configuration):
         'authentication',
         'users',
         'corsheaders',
-
+        'bdd',
     )
 
     # https://docs.djangoproject.com/en/1.8/topics/http/middleware/
