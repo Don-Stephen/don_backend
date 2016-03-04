@@ -4,24 +4,24 @@ Feature: {{ description }}
   I want {{ purpose }}
 ​
   Background:
-	Given {{ given }}
+	Given {{ bgiven.content }}
 {% for bgiven in bgivens %}
-    And {{ bgiven }}
+    And {{ bgiven.content }}
 {% endfor %}
 
   @tag1 @tag2
   Scenario: {{ title }}
-    Given {{ given }}
+    Given {{ sgiven.content }}
 
 {% for addgiven in extragivens %}
-	And {{ addgiven }}
+	And {{ addgiven.content }}
 {% endfor %}
 
-	When {{ when }}
+	When {{ when.content }}
 {% for addwhen in extrawhens %}
-	And {{ addwhen }}
+	And {{ addwhen.content }}
 {% endfor %}
-	Then {{ then }}
+	Then {{ then.content }}
 {% for addthen in extrathens %}
-	And {{ addthen }}
+	And {{ addthen.content }}
 {% endfor %}

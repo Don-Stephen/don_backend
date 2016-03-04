@@ -12,7 +12,7 @@ class Feature(models.Model):
     purpose = models.CharField(max_length=255)
     ffile = models.FileField()
     project = models.ForeignKey(Project)
-
+    background = models.ForeignKey(Background, related_name='features')
 
     def __unicode__(self):
         return self.description
@@ -21,7 +21,7 @@ class Background(models.Model):
     pass
 
 class Scenario(models.Model):
-    feature = models.ForeignKey(Feature)
+    feature = models.ForeignKey(Feature, related_name='scenarios')
     title = models.CharField(max_length=255)
     tags = models.ManyToManyField(Tag, null=True, blank=True)
 
@@ -31,8 +31,8 @@ class Scenario(models.Model):
 
 class Given(models.Model):
     content = models.CharField(max_length=255)
-    scenario = models.ForeignKey(Scenario, null=True)
-    background = models.ForeignKey(Background, null=True)
+    scenario = models.ForeignKey(Scenario, null=True, related_name='givens')
+    background = models.ForeignKey(Background, null=True, related_name='givens')
 
     def __unicode__(self):
         return self.content
@@ -40,14 +40,14 @@ class Given(models.Model):
 
 class When(models.Model):
     content = models.CharField(max_length=255)
-    scenario = models.ForeignKey(Scenario)
+    scenario = models.ForeignKey(Scenario, related_name='whens')
 
     def __unicode__(self):
         return self.content
 
 class Then(models.Model):
     content = models.CharField(max_length=255)
-    scenario = models.ForeignKey(Scenario)
+    scenario = models.ForeignKey(Scenario, related_name='thens')
 
     def __unicode__(self):
         return self.content
