@@ -4,6 +4,11 @@ from django.db import models
 from users.models import LanguageConfig, Project, Tag
 # from django.utils.translation import ugettext_lazy as _
 
+
+class Background(models.Model):
+    pass
+
+
 class Feature(models.Model):
     language = models.ForeignKey(LanguageConfig)
     description = models.CharField(max_length=255)
@@ -17,8 +22,6 @@ class Feature(models.Model):
     def __unicode__(self):
         return self.description
 
-class Background(models.Model):
-    pass
 
 class Scenario(models.Model):
     feature = models.ForeignKey(Feature, related_name='scenarios')

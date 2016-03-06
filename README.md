@@ -5,13 +5,14 @@ An app for gathering requirements and converting them to tests.. Check out the p
 
 # Prerequisites 
 - [virtualenv](https://virtualenv.pypa.io/en/latest/)
-- [postgresql](http://www.postgresql.org/)
-- [redis](http://redis.io/)
-- [travis cli](http://blog.travis-ci.com/2013-01-14-new-client/)
-- [heroku toolbelt](https://toolbelt.heroku.com/)
+- [mysql](mysql server)
 
 # Initialize the project
 Create and activate a virtualenv:
+
+```bash
+apt-get install -y python3.4-dev gcc libmysqlclient-dev mysql-server
+```
 
 ```bash
 virtualenv env
@@ -25,37 +26,13 @@ pip install -r requirements/local.txt
 Create the database:
 
 ```bash
-createdb don-stephen
-```
-Initialize the git repository
+create database don_stephen;
 
-```
-git init
-git remote add origin git@github.com:Don-Stephen/don_backend.git
 ```
 
 Migrate, create a superuser, and run the server:
 ```bash
-python don-stephen/manage.py migrate
-python don-stephen/manage.py createsuperuser
-python don-stephen/manage.py runserver
-```
-
-# Create Servers
-By default the included fabfile will setup three environments:
-
-- dev -- The bleeding edge of development
-- qa -- For quality assurance testing
-- prod -- For the live application
-
-Create these servers on Heroku with:
-
-```bash
-fab init
-```
-
-# Automated Deployment
-Deployment is handled via Travis. When builds pass Travis will automatically deploy that branch to Heroku. Enable this with:
-```bash
-travis encrypt $(heroku auth:token) --add deploy.api_key
-```
+python manage.py syncdb
+python manage.py migrate
+python manage.py createsuperuser
+python manage.py runserver
