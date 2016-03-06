@@ -1,4 +1,8 @@
-#don_backend
+# don_stephen
+![Alt text](https://raw.githubusercontent.com/mreguero/don_stephen/master/app/static/images/Don%20Stephen2_s.png "Don Stephen")
+
+An app for gathering requirements and converting them to tests. 
+
 [![Build Status](https://travis-ci.org/Don-Stephen/don_backend.svg?branch=master)](https://travis-ci.org/Don-Stephen/don_backend)
 
 An app for gathering requirements and converting them to tests.. Check out the project's [documentation](http://Don-Stephen.github.io/don_backend/).
