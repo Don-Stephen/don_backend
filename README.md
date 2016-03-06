@@ -11,12 +11,11 @@ An app for gathering requirements and converting them to tests.. Check out the p
 Create and activate a virtualenv:
 
 ```bash
-apt-get install -y python3.4-dev gcc libmysqlclient-dev mysql-server
+apt-get install -y python3.4-dev gcc libmysqlclient-dev mysql-server virtualenvwrapper
 ```
 
 ```bash
-virtualenv env
-source env/bin/activate
+mkvirtualenv -p `which python3.4` don_backend
 ```
 Install dependencies:
 
@@ -25,14 +24,14 @@ pip install -r requirements/local.txt
 ```
 Create the database:
 
-```bash
-create database don_stephen;
+in the mysql cli
 
+```mysql
+create database don_stephen;
 ```
 
 Migrate, create a superuser, and run the server:
 ```bash
-python manage.py syncdb
 python manage.py migrate
 python manage.py createsuperuser
 python manage.py runserver
