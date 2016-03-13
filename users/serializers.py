@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import (User, Project, Tag,
+from .models import (User, Project,
                      LanguageConfig, SenderConfig)
 
 class LanguageConfigSerializer(serializers.ModelSerializer):
@@ -57,12 +57,3 @@ class ProjectSerializer(serializers.ModelSerializer):
         project.save()
         return project
 
-class TagSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Tag
-        fields = ('id', 'name')
-
-    def create(self, validated_data):
-        tag = Tag.objects.create(**validated_data)
-        return tag

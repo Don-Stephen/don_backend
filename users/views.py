@@ -2,13 +2,13 @@ from rest_framework import viewsets, mixins
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 
-from .models import (User, Project, Tag,
+from .models import (User, Project,
                      LanguageConfig, SenderConfig)
 
 from .permissions import IsOwnerOrReadOnly
 from .serializers import (CreateUserSerializer, UserSerializer,
-                          ProjectSerializer, TagSerializer,
-                          LanguageConfigSerializer, SenderConfigSerializer)
+                          ProjectSerializer, LanguageConfigSerializer,
+                          SenderConfigSerializer)
 
 
 class UserViewSet(mixins.CreateModelMixin,
@@ -52,19 +52,6 @@ class ProjectViewSet(mixins.CreateModelMixin,
             return Response(data=self.serializer_class(project).data, status=201)
         else:
             return Response(data=project.errors, status=400)
-
-class TagViewSet(mixins.CreateModelMixin,
-                 mixins.RetrieveModelMixin,
-                 mixins.UpdateModelMixin,
-                 mixins.ListModelMixin,
-                 mixins.DestroyModelMixin,
-                 viewsets.GenericViewSet):
-    """
-    Creates, Updates, and retrives Tags
-    """
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
-    permission_classes = (AllowAny,)
 
 
 class LanguageConfigViewSet(mixins.CreateModelMixin,

@@ -8,9 +8,9 @@ from django.contrib import admin
 from django.views.generic.base import RedirectView
 from rest_framework.routers import DefaultRouter
 
-from users.views import (UserViewSet, ProjectViewSet, TagViewSet,
+from users.views import (UserViewSet, ProjectViewSet,
                          LanguageConfigViewSet, SenderConfigViewSet)
-from bdd.views import (FeatureViewSet, ScenarioViewSet)
+from bdd.views import (FeatureViewSet, ScenarioViewSet, TagViewSet,)
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)

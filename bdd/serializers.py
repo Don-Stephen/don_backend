@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Feature, Scenario
+from .models import Feature, Scenario, Tag
 
 
 class FeatureSerializer(serializers.ModelSerializer):
@@ -28,3 +28,14 @@ class ScenarioSerializer(serializers.ModelSerializer):
         if tags is not None:
             scenario.tags.add(*tags)
         return scenario
+
+
+class TagSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Tag
+        fields = ('id', 'name')
+
+    def create(self, validated_data):
+        tag = Tag.objects.create(**validated_data)
+        return tag

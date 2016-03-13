@@ -2,26 +2,30 @@ Feature: {{ description }}
   In order {{ finality }}
   As {{ who }}
   I want {{ purpose }}
-​
+
+{% if background %}
   Background:
 	Given {{ bgiven.content }}
 {% for bgiven in bgivens %}
     And {{ bgiven.content }}
 {% endfor %}
+{% endif %}
 
+{% for scenario in scenarios %}
   @tag1 @tag2
-  Scenario: {{ title }}
-    Given {{ sgiven.content }}
+  Scenario: {{ scenario.title }}
+    Given {{ scenario.sgiven.content }}
 
-{% for addgiven in extragivens %}
+{% for addgiven in scenario.extragivens %}
 	And {{ addgiven.content }}
 {% endfor %}
-
-	When {{ when.content }}
-{% for addwhen in extrawhens %}
+	When {{ scenario.when.content }}
+{% for addwhen in scenario.extrawhens %}
 	And {{ addwhen.content }}
 {% endfor %}
-	Then {{ then.content }}
-{% for addthen in extrathens %}
+	Then {{ scenario.then.content }}
+{% for addthen in scenario.extrathens %}
 	And {{ addthen.content }}
+{% endfor %}
+
 {% endfor %}

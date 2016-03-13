@@ -1,8 +1,15 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from users.models import LanguageConfig, Project, Tag
+from users.models import LanguageConfig, Project
 # from django.utils.translation import ugettext_lazy as _
+
+
+class Tag(models.Model):
+    name = models.CharField(max_length=255)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Background(models.Model):
@@ -15,7 +22,7 @@ class Feature(models.Model):
     finality = models.CharField(max_length=255)
     who = models.CharField(max_length=255)
     purpose = models.CharField(max_length=255)
-    ffile = models.FileField()
+    ffile = models.FileField(upload_to='features/')
     project = models.ForeignKey(Project)
     background = models.ForeignKey(Background, related_name='features', null=True)
 
@@ -52,15 +59,3 @@ class Then(models.Model):
     content = models.CharField(max_length=255)
     scenario = models.ForeignKey(Scenario, related_name='thens')
 
-    def __unicode__(self):
-        return self.content
-
-class And(models.Model):
-    content = models.CharField(max_length=255)
-    related_to = models.CharField(max_length=255, choices=[('given', 'given'), ('then', 'then'), ('when', 'when')])
-    table = models.TextField()
-    background = models.ForeignKey(Background, null=True)
-    scenario = models.ForeignKey(Scenario, null=True)
-
-    def __unicode__(self):
-        return self.content
