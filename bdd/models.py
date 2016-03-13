@@ -17,7 +17,7 @@ class Feature(models.Model):
     purpose = models.CharField(max_length=255)
     ffile = models.FileField()
     project = models.ForeignKey(Project)
-    background = models.ForeignKey(Background, related_name='features')
+    background = models.ForeignKey(Background, related_name='features', null=True)
 
     def __unicode__(self):
         return self.description

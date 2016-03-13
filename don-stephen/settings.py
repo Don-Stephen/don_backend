@@ -48,6 +48,7 @@ INSTALLED_APPS = (
 	'users',
 	'corsheaders',
 	'bdd',
+        'django_extensions',
     )
 
 MIDDLEWARE_CLASSES = [
